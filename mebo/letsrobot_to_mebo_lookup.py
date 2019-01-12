@@ -42,6 +42,12 @@ letsrobot_to_mebo_lookup = {
     LetsrobotCommands.C: [
         MeboCommands.CLAW_POSITION
     ],
+    LetsrobotCommands.OI: [
+        MeboCommands.CLAW_POSITION
+    ],
+    LetsrobotCommands.CI: [
+        MeboCommands.CLAW_POSITION
+    ],
     LetsrobotCommands.S1: [
         MeboCommands.SET_TURNING_SPEED_1
     ],

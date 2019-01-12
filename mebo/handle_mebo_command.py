@@ -6,6 +6,35 @@ import httplib, socket, time
 
 converter = LetsRobotToMeboConverter()
 
+claw_position = mebo_constants.CLAW_CLOSE_POSITION
+def handle_claw_increment(command):
+    global claw_position
+
+    if command == "OI":
+        claw_position -= mebo_constants.CLAW_INCREMENT
+    if command == "CI":
+        claw_position += mebo_constants.CLAW_INCREMENT
+
+    if claw_position > mebo_constants.CLAW_CLOSE_POSITION:
+        claw_position = mebo_constants.CLAW_CLOSE_POSITION
+    if claw_position < mebo_constants.CLAW_OPEN_POSITION:
+        claw_position = mebo_constants.CLAW_OPEN_POSITION
+
+    mebo_command = converter.convert({
+        "command": command,
+        "parameter": claw_position
+    })
+
+    try:
+        conn = httplib.HTTPConnection(mebo_constants.MEBO_IP_ADDRESSE)
+        
+        print "\nSTART - sending GET request to: " + str(mebo_constants.MEBO_IP_ADDRESSE) + "/ajax/command.json" + mebo_command + "\n"
+        conn.request("GET","/ajax/command.json" + mebo_command)
+        res = conn.getresponse()
+        print(res.status, res.reason)
+    except (httplib.HTTPException, socket.error) as ex:
+        print "Error: %s" % ex
+
 def handle_speed(command, speed):
     command = command.encode('ascii','ignore')
 
@@ -68,6 +97,9 @@ def handle_mebo_command(command):
     if command == "TI":
         return
     if command == "TD":
+        return
+    if command == "OI" or command == "CI":
+        handle_claw_increment(command)
         return
 
     mebo_command = converter.convert({

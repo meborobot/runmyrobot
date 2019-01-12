@@ -14,6 +14,9 @@ class LetsrobotCommands(Enum):
     RL = "RL"
     RR = "RR"
 
+    OI = "OI"
+    CI = "CI"
+
     O = "O"
     C = "C"
 

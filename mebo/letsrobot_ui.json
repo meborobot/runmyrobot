@@ -69,6 +69,14 @@
                     { 
                         "label": "Close",
                         "command": "C"
+                    },
+                    { 
+                        "label": "Open a little",
+                        "command": "OI"
+                    },
+                    { 
+                        "label": "Close a little",
+                        "command": "CI"
                     }
                 ]
             }
