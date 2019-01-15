@@ -1,10 +1,35 @@
 from mebo.letsrobot_to_mebo_converter import LetsRobotToMeboConverter
 from mebo.letsrobot_commands import LetsrobotCommands
+from mebo.mebo_commands import MeboCommands
 from mebo.letsrobot_to_param_lookup import letsrobot_to_param_lookup
 import mebo.mebo_constants as mebo_constants
 import httplib, socket, time
 
 converter = LetsRobotToMeboConverter()
+
+mebo_calibrated = False
+def calibrate_mebo():
+    global mebo_calibrated
+
+    if mebo_calibrated:
+        return
+
+    mebo_command = converter.generate_message({
+        "command": MeboCommands.CAL_ALL,
+        "parameter": 0
+    })
+
+    try:
+        conn = httplib.HTTPConnection(mebo_constants.MEBO_IP_ADDRESSE)
+        
+        print "\nSTART - sending GET request to: " + str(mebo_constants.MEBO_IP_ADDRESSE) + "/ajax/command.json" + mebo_command + "\n"
+        conn.request("GET","/ajax/command.json" + mebo_command)
+        res = conn.getresponse()
+        print(res.status, res.reason)
+    
+        mebo_calibrated = True
+    except (httplib.HTTPException, socket.error) as ex:
+        print "Error: %s" % ex
 
 claw_position = mebo_constants.CLAW_CLOSE_POSITION
 def handle_claw_increment(command):
@@ -87,6 +112,8 @@ def handle_speed(command, speed):
 
 def handle_mebo_command(command):
     command = command.encode('ascii','ignore')
+
+    calibrate_mebo()
     
     if command == "stop":
         return

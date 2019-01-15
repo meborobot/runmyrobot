@@ -86,7 +86,7 @@ class LetsRobotToMeboConverter:
         cmd_str = self._command_string(command, parameter)
         return "command" + str(number) + "=mebolink_message_send(" + cmd_str + ")"
 
-    def _generate_message(self, *commands):
+    def generate_message(self, *commands):
         query = "?"
         for i, command in enumerate(commands):
             query += self._generate_single_command(i + 1, command["command"], command["parameter"])
@@ -113,4 +113,4 @@ class LetsRobotToMeboConverter:
         commands = []
         for lr_command in lr_commands:
             commands.extend(self._lr_to_mebo_command(lr_command["command"], lr_command["parameter"]))
-        return self._generate_message(*commands)
+        return self.generate_message(*commands)
