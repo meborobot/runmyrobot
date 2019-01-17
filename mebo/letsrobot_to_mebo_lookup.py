@@ -18,6 +18,12 @@ letsrobot_to_mebo_lookup = {
         MeboCommands.WHEEL_LEFT_FORWARD,
         MeboCommands.WHEEL_RIGHT_BACKWARD
     ],
+    LetsrobotCommands.LN: [
+        MeboCommands.LIGHT_OFF
+    ],
+    LetsrobotCommands.LY: [
+        MeboCommands.LIGHT_ON
+    ],
     LetsrobotCommands.AU: [
         MeboCommands.ARM_UP
     ],
@@ -58,3 +64,4 @@ letsrobot_to_mebo_lookup = {
         MeboCommands.SET_TURNING_SPEED_3
     ]
 }
+

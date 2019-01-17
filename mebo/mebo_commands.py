@@ -57,3 +57,6 @@ class MeboCommands(Enum):
 
     QUERY_EVENT = "QUERY_EVENT"
     NONE = "NONE"
+
+    LIGHT_ON = "LIGHT_ON"
+    LIGHT_OFF = "LIGHT_OFF"
