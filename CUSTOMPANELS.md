@@ -59,7 +59,7 @@
                },
                {
                   "label":"claw close",
-                  "command":"CI"
+                  "command":"C"
                }
             ]
          }
