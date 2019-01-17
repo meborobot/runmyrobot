@@ -107,8 +107,6 @@ def handle_mebo_command(command):
         "parameter": letsrobot_to_param_lookup[LetsrobotCommands(command)]
     })
 
-    print mebo_command
-
     mebo_command_stop = converter.convert({
         "command": "F",
         "parameter": 0
