@@ -47,11 +47,11 @@
                },
                {
                   "label":"rotate left",
-                  "command":"RL"
+                  "command":"RR"
                },
                {
                   "label":"rotate right",
-                  "command":"RR"
+                  "command":"RL"
                },
                {
                   "label":"claw open",
@@ -85,6 +85,14 @@
                {
                   "label":"Turningspeed-",
                   "command":"TD"
+               },
+               {
+                  "label":"Light ON",
+                  "command":"LY"
+               },
+               {
+                  "label":"Light OFF",
+                  "command":"LN"
                }
             ]
          }
