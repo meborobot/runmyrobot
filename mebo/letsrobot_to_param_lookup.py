@@ -10,6 +10,9 @@ letsrobot_to_param_lookup = {
     LetsrobotCommands.AU: mebo_constants.ARM_SPEED,
     LetsrobotCommands.AD: mebo_constants.ARM_SPEED,
 
+    LetsrobotCommands.LY: mebo_constants.LIGHT_ON,
+    LetsrobotCommands.LN: mebo_constants.LIGHT_OFF,
+
     LetsrobotCommands.WU: mebo_constants.WRIST_UD_SPEED,
     LetsrobotCommands.WD: mebo_constants.WRIST_UD_SPEED,
 

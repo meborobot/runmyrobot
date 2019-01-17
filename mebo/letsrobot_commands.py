@@ -24,3 +24,5 @@ class LetsrobotCommands(Enum):
     S2 = "S2"
     S3 = "S3"
     
+    LY = "LY"
+    LN = "LN"

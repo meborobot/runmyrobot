@@ -33,6 +33,9 @@ class LetsRobotToMeboConverter:
         if cmd == MeboCmd.READERS:                 return "READERS=?"
         elif cmd == MeboCmd.FACTORY:               return "P" 
         elif cmd == MeboCmd.BAT:                   return "BAT=?"
+
+        elif cmd == MeboCmd.LIGHT_ON:              return new_cmd() + "RAAAAAAAVd"
+        elif cmd == MeboCmd.LIGHT_OFF:             return new_cmd() + "RAAAAAAAVc"
  
         elif cmd == MeboCmd.WHEEL_LEFT_FORWARD:    return new_cmd() + "F" + enc_spd(para)
         elif cmd == MeboCmd.WHEEL_LEFT_BACKWARD:   return new_cmd() + "F" + enc_spd(-para)
