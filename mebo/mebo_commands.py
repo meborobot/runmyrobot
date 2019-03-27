@@ -60,3 +60,5 @@ class MeboCommands(Enum):
 
     LIGHT_ON = "LIGHT_ON"
     LIGHT_OFF = "LIGHT_OFF"
+
+    FIXCLAW = "FIXCLAW"
