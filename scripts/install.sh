@@ -43,15 +43,15 @@ sleep 1s
 
 
 # Write the start_robot file with the ID for robot and camera in
-cat > start_robot <<EOF
+#cat > start_robot <<EOF
 #!/bin/bash
 # suggested use for this:
 # (1) Put in the ids for your robot, YOURROBOTID and YOURCAMERAID
 # (2) use sudo to create a crontab entry: @reboot /bin/bash /home/pi/start_robot
-cd /home/pi/runmyrobot
-nohup scripts/repeat_start python controller.py ${input_robot} --type mebo2 &> /dev/null &
-nohup scripts/repeat_start python send_video.py ${input_camera} 0 --kbps 2000 &> /dev/null &
-EOF
+#cd /home/pi/runmyrobot
+#nohup scripts/repeat_start python controller.py ${input_robot} --type mebo2 &> /dev/null &
+#nohup scripts/repeat_start python send_video.py ${input_camera} 0 --kbps 2000 &> /dev/null &
+#EOF
 
 # Make sure the system is up to date
 sudo apt-get -y update
@@ -75,4 +75,4 @@ chmod +x ~/start_robot
 echo
 echo
 
-echo -e "\e[33mInstall has completed, please run start_robot, or reboot your robot to bring it online.\e[39m"
+echo -e "\e[33mInstall has completed, please run start_robot manually, due autostart removal.\e[39m"
